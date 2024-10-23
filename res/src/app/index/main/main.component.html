@@ -1,0 +1,49 @@
+<div class="div_search">
+    <label>검색조건</label>
+    <br/>
+    <input type="text" placeholder="저자" (keyup)="mask($event)" [(ngModel)]="searchItem.writer">
+    <input type="text" placeholder="책이름"  (keyup)="mask($event)" [(ngModel)]="searchItem.name">
+        <!--ng-pattern="[a-zA-Z0-9 ]*"-->
+    <button type="button" (click)="search()" class="main_button">검색</button>
+    <button class="add" type="button" (click)="add()" class="main_button">책추가</button>
+    <br/>
+    
+</div>
+
+<table class="mainTbl">
+    <tr>
+        <th>#</th>
+        <th>책이름</th>
+        <th>저자</th>
+        <th>수량</th>
+    </tr>
+    <!-- <tr *ngFor="let car of list">
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+    </tr> -->
+    <tbody *ngIf="list != null">
+        <tr *ngFor="let item of list | paginate: { itemsPerPage: 10, currentPage: p }; let i = index"
+            (dblclick)="detail(item)">
+            <td>{{item.idx}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.writer}}</td>
+            <td>{{item.count}}</td>
+        </tr>
+        <tr *ngIf="item.length ===0">
+            <td colspan="5">no data</td>
+        </tr>
+    </tbody>
+    <tbody *ngIf="item == null">
+        <tr>
+            <td colspan="5">no data</td>
+        </tr>
+    </tbody>
+    
+</table>
+<div class="paginate">
+    
+    <pagination-controls (pageChange)="p = $event" class="my-pagination"></pagination-controls>
+</div>

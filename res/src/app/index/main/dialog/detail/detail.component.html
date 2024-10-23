@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>상세보기</h2>
+<mat-dialog-content>
+  <input type="text" class="txt_search" placeholder="책이름"  (keyup)="mask($event)" [(ngModel)]="dialogItem.name">
+  <input type="text" class="txt_search" placeholder="저자" (keyup)="mask($event)" [(ngModel)]="dialogItem.writer">
+  <input type="number" class="txt_search" placeholder="수량"  (keyup)="mask($event)" [(ngModel)]="dialogItem.count">
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="close(1)">수정</button>
+  <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+  <button mat-button (click)="close(2)">삭제</button>
+</mat-dialog-actions>

@@ -1,0 +1,24 @@
+.mat-toolbar {
+    background-color: cornflowerblue;
+    color: white;
+}
+
+.mat-toolbar > span {
+    font-size: 3rem;
+    font-family: 'neo-bold-font';
+}
+
+.mat-toolbar > a {
+    font-size: 2rem;
+    padding-right: 3%;
+    
+}
+
+
+.mat-button {
+    color: white;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}

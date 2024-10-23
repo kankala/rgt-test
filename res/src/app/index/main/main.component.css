@@ -1,0 +1,48 @@
+.mainTbl {
+    width: 100%;
+    border: 2px solid #272727;
+    border-collapse: collapse;
+    text-align: center;
+  }
+.mainTbl tr{
+    height: 35px;
+}
+.mainTbl th{
+  /* border: 2px solid #272727; */
+  background-color: #383734;
+  /*border: 2px solid #fff;*/
+  /* color: #fff; */
+  color: #FFB400;
+  font-size: 2.0vw;
+  height: 30px;
+}
+.mainTbl td{
+  /* border: 2px solid #272727; */
+  /* border: 2px solid #fff;
+  color: #fff; */
+  font-size: 1.5vw;
+}
+.mainTbl tbody tr:hover{
+    background-color: #FFB400;
+    cursor: pointer;
+}
+.paginate{
+  margin-top: 1%;
+  text-align: center;
+}
+
+.my-pagination .ngx-pagination .current {
+  background: #FFB400;
+  /* color: black; */
+  font-weight: bold;
+}
+
+.main_button{
+  font-size: 1vw;
+  font-family: 'neo-bold-font';
+  font-weight: bold;
+}
+
+.floatR{
+  float: right;
+}
