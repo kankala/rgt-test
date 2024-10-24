@@ -18,11 +18,12 @@ interface Course {
 export class HttpApiService {
 	//token = localStorage.getItem('jwt_token');
 	//appUrl = environment.apiUrl;
-	//headers = new HttpHeaders()
+	//headers = new HttpHeaders()z
 	//	.set("Content-Type", "application/json")
 	//	.set('Access-Control-Allow-Origin', '*')
 	//	.set('Authorization',this.token);
 	//appUrl = environment.apiUrl;
+	//appUrl = "http://localhost:4301"
 	appUrl = "http://dandadan.synology.me:4301"
 	headers = new HttpHeaders()
 		.set("Content-Type", "application/json");

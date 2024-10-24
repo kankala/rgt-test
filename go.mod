@@ -8,7 +8,7 @@ require (
 	github.com/gin-gonic/gin v1.10.0
 	github.com/go-sql-driver/mysql v1.8.1
 	github.com/gocraft/dbr v0.0.0-20190714181702-8114670a83bd
-	github.com/mitchellh/mapstructure v1.5.0
+	github.com/joho/godotenv v1.5.1
 	golang.org/x/sync v0.8.0
 )
 

@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 	"reflect"
 	"time"
 
@@ -12,6 +13,7 @@ import (
 	"github.com/gin-contrib/cors"
 	"github.com/gin-contrib/static"
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 	"golang.org/x/sync/errgroup"
 )
 
@@ -23,8 +25,18 @@ func main() {
 
 	fmt.Println("Hello World!")
 
+	err := godotenv.Load("/usr/serverdata/rgtServer/.env_release")
+	//err := godotenv.Load(".env_local")
+
+	if err != nil {
+		log.Fatal(".env 파일을 찾을 수 없습니다.")
+	}
+
+	hostip := os.Getenv("host_ip")
+	port_e := os.Getenv("port_e")
+
 	goServer1 := &http.Server{
-		Addr:         "192.168.10.106:4301",
+		Addr:         hostip + ":" + port_e,
 		Handler:      goServer(),
 		ReadTimeout:  5 * time.Second,
 		WriteTimeout: 10 * time.Second,
@@ -43,8 +55,12 @@ func main() {
 			}
 		}
 	}()
+	err = goServer1.ListenAndServe()
 
-	goServer1.ListenAndServe()
+	if err != nil {
+		log.Fatal(err.Error())
+	}
+	//goServer1.ListenAndServeTLS("cert.pem", "privkey.pem")
 
 }
 func goServer() http.Handler {
@@ -53,8 +69,11 @@ func goServer() http.Handler {
 	e := gin.Default()
 	e.Use(gin.Recovery())
 
+	host := os.Getenv("host")
+	port_f := os.Getenv("port_f")
 	configx := cors.Config{
-		AllowOrigins:     []string{"http://dandadan.synology.me", "http://dandadan.synology.me:4300"},
+		//AllowOrigins:     []string{"http://dandadan.synology.me:4300", "http://dandadan.synology.me"},
+		AllowOrigins:     []string{"http://" + host + ":" + port_f, "http://" + host},
 		AllowMethods:     []string{"POST", "PUT", "DELETE", "GET", "OPTIONS", "PATCH"},
 		AllowHeaders:     []string{"Content-Type"},
 		AllowCredentials: true,
